@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AVAILABLE_TIMES = [
   "12:00", "12:30", "13:00", "13:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00",
@@ -17,6 +17,30 @@ export default function ReservationSection() {
   const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchReservations = async () => {
+
+      try {
+        const res = await fetch("/api/reservations", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const data = await res.json();
+
+        console.log(data)
+        if (!res.ok) throw new Error(data.error || "Unable to GET reservation.");
+
+      } catch (err) {
+        console.log(err)
+        setError(err instanceof Error ? err.message : "Something went wrong.");
+      }
+    };
+
+  fetchReservations();
+  
+  },[])
 
   const handleSubmit = async () => {
     setError(null);
@@ -57,6 +81,7 @@ export default function ReservationSection() {
       setLoading(false);
     }
   };
+  
 
   return (
     <section id="reservations" className="bg-[#090906] py-24 px-6 text-white">
