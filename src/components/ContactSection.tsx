@@ -64,11 +64,14 @@ export default function ContactSection() {
 
         <div className="mt-10 space-y-4 text-sm text-[#7a7a64]">
           <p>📍 Via Napoli 14, Naples, Italy</p>
+          <p>📞 1234567890</p>
+          <p>📞 (555) 123-4567</p>
+          <p>📞 +44 20 7946 0958</p>
           <p>📞 +39 081 987 6543</p>
 
           <p>📧 codingbucketorg@gmail.com</p>
 
-         {/* <p className="flex items-center gap-2">
+         <p className="flex items-center gap-2">
           <a
             href="mailto:contact@codingbucket.org"
             title="contact@codingbucket.org"
@@ -77,7 +80,7 @@ export default function ContactSection() {
           >
             <Mail size={18} />
           </a>
-        </p> */}
+        </p>
 
           <p>
             Support Email:{" "}
