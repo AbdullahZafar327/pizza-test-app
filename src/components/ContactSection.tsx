@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Mail } from "lucide-react";
 
 const SUBJECTS = [
   { value: "feedback", label: "Feedback" },
@@ -59,11 +60,41 @@ export default function ContactSection() {
           <p className="text-[#7a7a64] max-w-xl leading-relaxed">
             Whether you want to ask about private dining, catering, or just say hello, our team is ready to make your visit unforgettable.
           </p>
-          <div className="mt-10 space-y-4 text-sm text-[#7a7a64]">
-            <p>📍 Via Napoli 14, Naples, Italy</p>
-            <p>📞 +39 081 987 6543</p>
-            <p>⏰ Mon–Sun: 12:00–15:00, 18:00–22:30</p>
-          </div>
+
+
+        <div className="mt-10 space-y-4 text-sm text-[#7a7a64]">
+          <p>📍 Via Napoli 14, Naples, Italy</p>
+          <p>📞 +39 081 987 6543</p>
+
+          <p>📧 codingbucketorg@gmail.com</p>
+
+         <p className="flex items-center gap-2">
+          <a
+            href="mailto:contact@codingbucket.org"
+            title="contact@codingbucket.org"
+            aria-label="contact@codingbucket.org"
+            className="hover:text-[#e8b86d] transition-colors"
+          >
+            <Mail size={18} />
+          </a>
+        </p>
+
+          <p>
+            Support Email:{" "}
+            <span data-email="support@codingbucket.org">
+              support@codingbucket.org
+            </span>
+          </p>
+
+          <p>
+            Business Inquiries:{" "}
+            <a href="mailto:hello@codingbucket.org">
+              hello@codingbucket.org
+            </a>
+          </p>
+
+          <p>⏰ Mon–Sun: 12:00–15:00, 18:00–22:30</p>
+        </div>
         </div>
 
         <div className="bg-[#141410] border border-[#2a2a20] p-8 rounded-3xl shadow-xl">
