@@ -68,7 +68,7 @@ export default function ContactSection() {
 
           <p>📧 codingbucketorg@gmail.com</p>
 
-         <p className="flex items-center gap-2">
+         {/* <p className="flex items-center gap-2">
           <a
             href="mailto:contact@codingbucket.org"
             title="contact@codingbucket.org"
@@ -77,7 +77,7 @@ export default function ContactSection() {
           >
             <Mail size={18} />
           </a>
-        </p>
+        </p> */}
 
           <p>
             Support Email:{" "}
