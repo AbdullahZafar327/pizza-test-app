@@ -1,0 +1,40 @@
+{
+  "name": "Napoli Pizza Assistant",
+  "version": "1.0.0",
+  "description": "AI assistant for pizza ordering, table reservations, menu inquiries, and customer support.",
+  "url": "https://napolipizza.example.com",
+  "provider": {
+    "name": "Napoli Pizza",
+    "website": "https://napolipizza.example.com",
+    "email": "support@napolipizza.example.com"
+  },
+  "capabilities": [
+    "menu_lookup",
+    "pizza_recommendation",
+    "table_reservation",
+    "order_tracking",
+    "store_hours",
+    "contact_support"
+  ],
+  "endpoints": {
+    "chat": "/api/agent/chat",
+    "menu": "/api/menu",
+    "reservations": "/api/reservations",
+    "orders": "/api/orders"
+  },
+  "authentication": {
+    "type": "none"
+  },
+  "contact": {
+    "email": "hello@napolipizza.example.com",
+    "phone": "+39 081 987 6543"
+  },
+  "metadata": {
+    "location": "Via Napoli 14, Naples, Italy",
+    "languages": [
+      "en",
+      "it"
+    ],
+    "timezone": "Europe/Rome"
+  }
+}
