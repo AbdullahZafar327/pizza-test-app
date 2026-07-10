@@ -1,0 +1,672 @@
+{
+  "auth": {
+    "type": "none",
+    "optional_for": [
+      "create_contact",
+      "get_menu",
+      "create_order",
+      "create_order_pizza",
+      "get_order_pizza",
+      "create_reservations",
+      "get_reservations"
+    ],
+    "required_for": []
+  },
+  "domain": "pizza-test-app-jade.vercel.app",
+  "errors": [
+    {
+      "code": "ACTION_NOT_EXECUTABLE",
+      "message": "This action is draft and has no runtime binding yet."
+    },
+    {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "message": "Too many requests. Retry after the rate limit window."
+    },
+    {
+      "code": "AUTH_REQUIRED",
+      "message": "This action requires authentication."
+    }
+  ],
+  "intent": "Neapolitan wood-fired pizzeria with online ordering, table reservations, and contact management. Features menu browsing, order placement with delivery/takeaway/dine-in options, and reservation booking.",
+  "actions": [
+    {
+      "id": "create_contact",
+      "via": "http",
+      "inputs": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "email": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "subject": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        }
+      },
+      "method": "POST",
+      "routes": [
+        {
+          "via": "http",
+          "method": "POST",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/contact",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "POST",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/contact",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "create_contact",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "create_contact",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/contact",
+      "operation": "create_contact",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": false,
+      "description": "Sends a customer contact message.",
+      "sensitivity": "destructive",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": true
+    },
+    {
+      "id": "get_menu",
+      "via": "http",
+      "inputs": {},
+      "method": "GET",
+      "routes": [
+        {
+          "via": "http",
+          "method": "GET",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/getMenu",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "GET",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/getMenu",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "get_menu",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "get_menu",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/getMenu",
+      "operation": "get_menu",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": true,
+      "description": "Fetches the restaurant menu from the backend.",
+      "sensitivity": "standard",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": false
+    },
+    {
+      "id": "create_order",
+      "via": "http",
+      "inputs": {
+        "items": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "orderType": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "customerName": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        }
+      },
+      "method": "POST",
+      "routes": [
+        {
+          "via": "http",
+          "method": "POST",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/order",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "POST",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/order",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "create_order",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "create_order",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/order",
+      "operation": "create_order",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": false,
+      "description": "Creates a customer order.",
+      "sensitivity": "irreversible",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": true
+    },
+    {
+      "id": "create_order_pizza",
+      "via": "http",
+      "inputs": {
+        "items": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "orderType": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "customerName": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        }
+      },
+      "method": "POST",
+      "routes": [
+        {
+          "via": "http",
+          "method": "POST",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/orderPizza",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "POST",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/orderPizza",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "create_order_pizza",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "create_order_pizza",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/orderPizza",
+      "operation": "create_order_pizza",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": false,
+      "description": "Creates a customer order.",
+      "sensitivity": "irreversible",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": true
+    },
+    {
+      "id": "get_order_pizza",
+      "via": "http",
+      "inputs": {},
+      "method": "GET",
+      "routes": [
+        {
+          "via": "http",
+          "method": "GET",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/orderPizza",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "GET",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/orderPizza",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "get_order_pizza",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "get_order_pizza",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/orderPizza",
+      "operation": "get_order_pizza",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": false,
+      "description": "Fetches order records from the backend.",
+      "sensitivity": "irreversible",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": false
+    },
+    {
+      "id": "create_reservations",
+      "via": "http",
+      "inputs": {
+        "date": {
+          "type": "ISO8601",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "time": {
+          "type": "ISO8601",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "email": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        },
+        "guests": {
+          "type": "string",
+          "required": false,
+          "description": "Observed request body field"
+        }
+      },
+      "method": "POST",
+      "routes": [
+        {
+          "via": "http",
+          "method": "POST",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/reservations",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "POST",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/reservations",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "create_reservations",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "create_reservations",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/reservations",
+      "operation": "create_reservations",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": false,
+      "description": "Creates a customer reservation.",
+      "sensitivity": "destructive",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": true
+    },
+    {
+      "id": "get_reservations",
+      "via": "http",
+      "inputs": {},
+      "method": "GET",
+      "routes": [
+        {
+          "via": "http",
+          "method": "GET",
+          "reason": null,
+          "source": "runtime_binding",
+          "target": "/api/reservations",
+          "executable": true
+        },
+        {
+          "via": "openapi",
+          "method": "GET",
+          "reason": null,
+          "source": "openapi_operation",
+          "target": "/api/reservations",
+          "executable": true
+        },
+        {
+          "via": "mcp",
+          "method": null,
+          "reason": "Generated MCP tool proxies to the evidence-backed HTTP runtime binding.",
+          "source": "mcp_tool",
+          "target": "get_reservations",
+          "executable": true
+        },
+        {
+          "via": "a2a",
+          "method": null,
+          "reason": "A2A skill maps to the same reviewed action ID.",
+          "source": "a2a_skill",
+          "target": "get_reservations",
+          "executable": true
+        }
+      ],
+      "outputs": {
+        "status": "string"
+      },
+      "endpoint": "/api/reservations",
+      "operation": "get_reservations",
+      "executable": true,
+      "rate_limit": "60/minute",
+      "reversible": true,
+      "description": "Fetches reservation records from the backend.",
+      "sensitivity": "standard",
+      "auth_required": false,
+      "execution_model": "sync",
+      "invocation_status": "runtime_binding_detected",
+      "requires_human_confirmation": false
+    }
+  ],
+  "entities": {
+    "order": {
+      "fields": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "items": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "ISO8601"
+        },
+        "order_type": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "delivery_address": {
+          "type": "string"
+        }
+      }
+    },
+    "contact": {
+      "fields": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "ISO8601"
+        }
+      }
+    },
+    "get_menu": {
+      "fields": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "ISO8601"
+        }
+      }
+    },
+    "order_pizza": {
+      "fields": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "items": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "ISO8601"
+        },
+        "order_type": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "delivery_address": {
+          "type": "string"
+        }
+      }
+    },
+    "reservation": {
+      "fields": {
+        "id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "guests": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "ISO8601"
+        }
+      }
+    }
+  },
+  "languages": [
+    "en"
+  ],
+  "protocols": {
+    "a2a": {
+      "status": "planned",
+      "version": "0.3",
+      "endpoint": "https://pizza-test-app-jade.vercel.app/a2a/message",
+      "agent_card": "https://pizza-test-app-jade.vercel.app/.well-known/agent-card.json"
+    },
+    "mcp": {
+      "status": "planned",
+      "version": "2025-03-26",
+      "artifact": "mcp/server.ts",
+      "endpoint": "https://pizza-test-app-jade.vercel.app/mcp",
+      "transport": "http"
+    },
+    "http": {
+      "source": "code_detected_runtime_binding",
+      "status": "available",
+      "base_url": "https://pizza-test-app-jade.vercel.app"
+    },
+    "openapi": {
+      "url": "https://pizza-test-app-jade.vercel.app/openapi.json",
+      "status": "available",
+      "version": "3.1.0",
+      "artifact": "openapi.json"
+    }
+  },
+  "agent_hints": {
+    "preferred_interaction": "structured_form",
+    "requires_business_context": true,
+    "supports_partial_fulfillment": false
+  },
+  "awp_version": "0.2",
+  "x-asp-trust": {
+    "provider": "localhost",
+    "registry": "http://localhost:8080/registry/pizza-test-app-jade.vercel.app",
+    "compliance": [],
+    "settlement": {
+      "supported": false,
+      "fee_paid_by": null,
+      "escrow_provider": null,
+      "supported_rails": [],
+      "transaction_fee": null
+    },
+    "verified_at": null,
+    "generated_state": "draft_synthetic_unverified",
+    "verification_level": "unverified",
+    "verified_attributes": [],
+    "industry_certification": null,
+    "professional_certification": null
+  },
+  "agent_status": {
+    "status": "draft_unverified",
+    "operational": true,
+    "status_endpoint": "https://pizza-test-app-jade.vercel.app/status",
+    "degraded_actions": []
+  },
+  "capabilities": {
+    "webhooks": false,
+    "streaming": false,
+    "pagination": "none",
+    "idempotency": true,
+    "batch_actions": false
+  },
+  "dependencies": [],
+  "legal_entity_name": "Napoli Pizzeria"
+}
